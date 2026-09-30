@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- QR Code Library: qrcodejs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <!-- Sidebar for History -->
+    <aside class="sidebar" id="historySidebar">
+        <h2 class="sidebar-title">생성 기록</h2>
+        <ul class="history-list" id="historyList">
+            <!-- History items will be inserted here -->
+            <li class="empty-history" id="emptyHistory">아직 생성된 기록이 없습니다.</li>
+        </ul>
+    </aside>
+
+    <div class="main-content" id="mainContent">
+        <!-- Ad Banner Placeholder -->
+        <div class="ad-banner-container">
+            <div class="ad-banner">
+                <span class="ad-text">광고 배너 영역</span>
+            </div>
+        </div>
+
+        <header class="header">
+            <img src="img/logo.png" alt="Logo" class="logo">
+        </header>
+        
+        <main class="container">
+            <div class="content-wrapper" id="contentWrapper">
+                <!-- URL Input Container -->
+                <div class="input-container" id="inputContainer">
+                    <h1 class="title">링크를 QR 코드로 변환하세요</h1>
+                    <div class="input-group">
+                        <input type="url" id="urlInput" placeholder="https://example.com" autocomplete="off" required>
+                        <button id="generateBtn" class="primary-btn">생성하기</button>
+                    </div>
+                    <div id="errorMessage" class="error-message">존재하지 않는 사이트 입니다.</div>
+                </div>
+
+                <!-- QR Code Display Container -->
+                <div class="qr-container hidden" id="qrContainer">
+                    <div class="qr-card">
+                        <div id="qrcode" title="링크로 이동하려면 클릭하세요"></div>
+                        <div class="action-buttons">
+                            <button id="copyBtn" class="secondary-btn">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                이미지 복사
+                            </button>
+                            <button id="downloadBtn" class="secondary-btn">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                                JPG 저장
+                            </button>
+                        </div>
+                        <p class="qr-hint">QR 코드를 클릭하면 해당 사이트로 이동합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">복사되었습니다!</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
